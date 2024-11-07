@@ -1,0 +1,24 @@
+
+/* 
+Obtenir le détail des ventes du produit 1
+
+| Ref_Produit | Annee | Mois | Qte | CA
+
+*/
+CREATE FUNCTION VentesProduits(
+	@Ref_Produit DECIMAL(6,0)
+	)
+	RETURNS TABLE
+	AS RETURN
+SELECT	YEAR(C.DATE_COMMANDE) AS Annee,
+		MONTH(C.DATE_COMMANDE) AS Mois,
+		SUM(DC.QUANTITE) AS QuantiteTotal,
+		SUM(DC.QUANTITE*DC.PRIX_UNITAIRE) AS MontantTotal
+FROM COMMANDES AS c 
+		INNER JOIN DETAILS_COMMANDES AS DC ON DC.NO_COMMANDE=C.NO_COMMANDE
+	WHERE REF_PRODUIT=@Ref_Produit
+	GROUP BY YEAR(C.DATE_COMMANDE),MONTH(C.DATE_COMMANDE)
+
+
+
+SELECT * FROM VentesProduits(1)
