@@ -1,0 +1,17 @@
+/*
+Avoir des statisitiques de ventes par pays et ville
+| Pays | Ville | NbCommandes | Nb clients servis 
+
+FROM	Table1 AS T1
+		INNER JOIN Table2 AS T2 ON T1.COL1=T2.COL2
+		INNER JOIN Table3 AS T3 ON T2.COL1=T3.COL2
+*/
+
+SELECT CL.PAYS, 
+		CL.VILLE, 
+		COUNT(CO.NO_COMMANDE) AS 'Nb Commandes',
+		COUNT(DISTINCT CL.CODE_CLIENT) AS 'Nb Clients'
+FROM COMMANDES AS CO 
+	 INNER JOIN CLIENTS AS CL ON CO.CODE_CLIENT=CL.CODE_CLIENT
+GROUP BY CL.PAYS, CL.VILLE
+WITH ROLLUP -- CUBE Inutile

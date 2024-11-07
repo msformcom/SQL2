@@ -1,0 +1,20 @@
+-- DDL Data Definition Language => Définir les données => CREATE ALTER DROP
+-- DML Data Manipulation Language => Manipuler les données => SELECT UPDATE INSERT DELETE
+-- CREATE VIEW enregistre la requète avec le nom ResumeCA
+CREATE VIEW ResumeCA AS
+SELECT C.NO_COMMANDE, 
+		CODE_CLIENT, 
+		NO_EMPLOYE, 
+		DATE_COMMANDE,
+		PORT,
+		SUM(DC.Quantite*DC.Prix_Unitaire) AS CA
+FROM COMMANDES AS C
+		INNER JOIN DETAILS_COMMANDES AS DC ON DC.NO_COMMANDE=C.NO_COMMANDE
+GROUP BY C.NO_COMMANDE, 
+		CODE_CLIENT, 
+		NO_EMPLOYE, 
+		DATE_COMMANDE,
+		PORT
+
+SELECT * 
+FROM ResumeCA

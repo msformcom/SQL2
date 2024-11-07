@@ -1,0 +1,33 @@
+Bonjour,
+
+Vous allez animer une formation disposant de lab, accessible via cette url (http://lab.ib-formation.fr).
+Vous trouverez ci-dessous les comptes de vos stagiaires, à fournir en début de formation.
+
+Votre compte formateur vous permet d'accéder à l'ensemble des postes, chaque stagiaire n'accède qu'a son poste.
+Vous pouvez vous connecter en même temps que le stagiaire pour l'accompagner dans son travail.
+Le mot de passe de connexion windows, pour la session ib, est Pa55w.rd
+
+
+Session: 24102433
+Salle: 10.05
+Formateur: DMS
+Date de début: 2024-11-04
+Salle	Poste	Username	Password
+10.05	Poste00	ib.10050004	3uNKWMbd
+10.05	Poste01	ib.10050104	nZgLjNhJ
+10.05	Poste02	ib.10050204	KCjRNWDg
+10.05	Poste03	ib.10050304	bXgFKyJk
+10.05	Poste04	ib.10050404	TMQwVJpz
+10.05	Poste05	ib.10050504	Kne7CWhP
+10.05	Poste06	ib.10050604	DXq2dbEU
+10.05	Poste07	ib.10050704	eD9GgXyY
+10.05	Poste08	ib.10050804	9ctRnDf7
+10.05	Poste09	ib.10050904	KtvBcmUE
+10.05	Poste10	ib.10051004	yCxcGHh2
+10.05	Poste11	severine.alexandre04	ayHKkjNr
+10.05	Poste12	mathilde.lacour04	Dx43ZYga
+
+
+Cliquez ici pour découvrir quelques astuces d'utilisation guacamole
+
+Nous restons à votre disposition pour vous apporter toutes les informations complémentaires qui vous sembleront utiles, ou vous accompagner en cas de problème d'utilisation de la plateforme
