@@ -1,4 +1,5 @@
 -- Création de procedure
+-- EXEC MajCommisions 2012 pour exécuter
 CREATE OR ALTER PROCEDURE MajCommisions (@Annee INT=NULL) 
 AS 
 BEGIN
