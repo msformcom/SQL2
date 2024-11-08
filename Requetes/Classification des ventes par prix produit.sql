@@ -42,7 +42,9 @@ SELECT @DateMax=MAX(DATE_COMMANDE) FROM COMMANDES
 SET @DateMin=DATEADD(month,-6,@DateMax)
 
 --SELECT @DateMin
-
+SELECT N*100 AS de,
+		N*100+100 AS a
+FROM RAnge(0,FLOOR(@MaxPrice/100))
 -- Création de la table des intervales avec deux colonnes (en mémoire)
 DECLARE @Intervales TABLE(
 				de DECIMAL(18,2),
