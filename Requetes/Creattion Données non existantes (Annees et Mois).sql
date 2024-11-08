@@ -3,39 +3,29 @@
 --(VALUES((2011),(2012),(2013))  T(n)
 
 -- Creation de table avec une colonne n
---CREATE TABLE Nums(
---	n INT PRIMARY KEY
---)
-
---DECLARE @i INT=0
---WHILE @i<10000
---BEGIN 
---	INSERT INTO Nums (n) VALUES(@i)
---	SET @i=@i+1
---END
-WITH Mois AS (
--- Mois : Le nombres de 1 a 12
-SELECT * FROM Nums WHERE n BETWEEN 1 AND 12
-),
-Annees AS ( 
--- Années : Nombre de 2011 à 2012
-SELECT * FROM Nums WHERE n BETWEEN 2011 AND 2013
-),
-AnneesMois AS (
--- Combinaisons de Annees et mois 
-SELECT Annees.n as Annee, Mois.n AS Mois FROM Annees ,Mois
-),
-Data AS (
-	SELECT  YEAR(C.DATE_COMMANDE) AS Annee, 
-			MONTH(C.DATE_COMMANDE) AS Mois,
-			SUM(DC.QUANTITE) AS QTE
-	FROM DETAILS_COMMANDES AS DC 
-		INNER JOIN COMMANDES C ON C.NO_COMMANDE=DC.NO_COMMANDE
-	WHERE DC.REF_PRODUIT=5
-	GROUP BY YEAR(C.DATE_COMMANDE), MONTH(C.DATE_COMMANDE)
+-- CREATE TABLE nécessite des droits
+CREATE TABLE Nums(     
+	n INT PRIMARY KEY
 )
-SELECT AM.Annee,
-		AM.Mois,
-		ISNULL(QTE,0)
-FROM AnneesMois AS AM
-LEFT JOIN DATA AS D ON AM.Annee=D.Annee AND AM.Mois=D.Mois
+-- Nom de table avec  # => Créée dans la BDD TempDB
+-- Automatiquement supprimée à la deconnexion
+CREATE TABLE #Nums(     
+	n INT PRIMARY KEY
+)
+
+-- Création d'une variable de type table => RAM
+-- A condition de ne pas trop charger des données
+DECLARE @Nums TABLE(
+	n INT 
+)
+
+-- Remplissage de table
+DECLARE @i INT=2011
+WHILE @i<=2013
+BEGIN 
+	INSERT INTO @Nums (n) VALUES(@i)
+	SET @i=@i+1
+END
+SELECT * FROM @Nums
+-- Idéalement : JE veux avoir une fonction qui me donne le résultat que j'attens
+SELECT * FROM Range(2011,2013) AS Annees , Range(1,12) AS Mois
